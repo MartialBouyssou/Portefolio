@@ -11,7 +11,6 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
 
-  <!-- MODALE MOBILE -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true">
       <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Fermer">✕</button>
@@ -19,15 +18,11 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════════
-       PAGE : HOME
-  ═══════════════════════   ══════════════════ -->
   <section id="home" class="page active" data-page="home">
 
-    <!-- Nav uniquement desktop -->
     <div class="desktop-only">
       <nav class="nav-home">
-        <span class="nav-logo">MB</span>
+        <span class="nav-logo">Martial Bouyssou</span>
         <ul class="nav-links">
           <li><a href="#" data-goto="home" class="nav-link">Accueil</a></li>
           <li><a href="#" data-goto="about" class="nav-link">À propos</a></li>
@@ -45,7 +40,7 @@
         <h1 class="hero-title">
           <span class="hero-title-line">Port</span><span class="hero-title-accent">folio</span>
         </h1>
-        <p class="hero-tagline">Développeur · Analyste · Curieux</p>
+        <p class="hero-tagline">Développeur: Créatif · Analyste · Curieux</p>
 
         <div class="hero-cta-group">
           <button class="btn-primary" data-goto="hard-skills" type="button">Voir mes compétences</button>
@@ -63,9 +58,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       PAGE : ABOUT
-  ══════════════════════════════════════════ -->
   <section id="about" class="page" data-page="about">
     <div class="page-inner">
       <button class="back-btn" data-goto="home" type="button">← Accueil</button>
@@ -75,8 +67,39 @@
           <p class="section-eyebrow">À propos de moi</p>
           <h2 class="section-title">Qui suis-je ?</h2>
           <div class="about-body">
-            <p>Remplace ce texte par ta présentation (parcours, motivation, objectifs).</p>
-            <p>2–3 paragraphes courts, orientés recruteur.</p>
+            <p>
+    Je suis actuellement étudiant en première année de BUT Informatique à l’IUT du Limousin. 
+    Je suis curieux de nature et j’ai toujours aimé comprendre le fonctionnent des systèmes et tester de nouvelles idées.
+    de nouvelles idées. Cette curiosité m’a naturellement conduit vers la programmation.
+  </p>
+
+  <p>
+    J’ai commencé très jeune à découvrir le développement à travers des environnements visuels 
+    basés sur des blocs, qui m’ont permis de comprendre les bases de la logique algorithmique. 
+    Au fil du temps, j’ai progressivement exploré d’autres technologies et environnements de développement, 
+    en menant divers projets personnels et en apprenant à structurer mes applications de manière 
+    claire et organisée.
+  </p>
+
+  <p>
+    Ce qui me plaît dans l’informatique c'est l’équilibre entre la créativité et la rigueur : 
+    transformer une idée en projet concret, organiser proprement une application et concevoir des 
+    solutions cohérentes et maintenables.
+  </p>
+
+  <p>
+    En parallèle du développement, j’apprécie la lecture et l’écriture, qui enrichissent 
+    ma réflexion et mon imagination. Ces centres d'intérêts influencent aussi ma manière d’aborder les projets 
+    informatiques, en cherchant toujours à comprendre les idées en profondeur et à explorer de 
+    nouvelles perspectives.
+  </p>
+
+  <p>
+    À l’avenir, je souhaite poursuivre mon parcours en informatique tout en m’ouvrant davantage 
+    à l’international. Mon objectif est notamment de réaliser un stage à l’étranger afin de découvrir 
+    de nouvelles cultures, collaborer dans des environnements différents et continuer à améliorer 
+    mon anglais.
+  </p>
           </div>
         </div>
 
@@ -101,14 +124,10 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       PAGE : HARD SKILLS
-  ══════════════════════════════════════════ -->
   <section id="hard-skills" class="page" data-page="hard-skills">
     <div class="hub-bg-grid" aria-hidden="true"></div>
     <button class="back-btn hub-home-btn" data-goto="home" type="button">← Accueil</button>
 
-    <!-- Desktop hub -->
     <div class="desktop-only">
       <div class="hub-center-card" id="hubCenter">
         <p class="section-eyebrow">Compétences techniques</p>
@@ -137,12 +156,41 @@
         <span class="anchor-label">Gestion de projet</span>
       </button>
 
-      <!-- Panels hard -->
       <div class="skill-panel" id="card-dev" data-slide="top">
         <button class="panel-back-btn" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Développement logiciel orienté qualité</h3>
-          <p class="skill-card-desc">Concevoir une application structurée, maintenable et robuste.</p>
+          <h3 class="skill-card-title">Concevoir une application structurée</h3>
+          <p class="skill-card-desc">
+      Dans le cadre d'un projet (<strong>S1.01</strong>) pendant mes études à l'IUT, j’ai développé une 
+      implémentation du jeu <strong>Sutom</strong> en Python. 
+      Dans mon cas, l'objectif n’était pas seulement de faire fonctionner le programme, mais 
+      aussi de concevoir une application claire et maintenable.
+    </p>
+
+    <p class="skill-card-desc">
+      Pour cela, j’ai organisé le projet en plusieurs modules distincts 
+      (<strong>core</strong>, <strong>persistence</strong>, <strong>ui</strong>) 
+      afin de séparer la logique du jeu, la gestion des données et l’interface. 
+      Cette organisation permet de modifier une partie du programme sans impacter 
+      les autres et rend le projet plus facile à comprendre.
+    </p>
+
+    <p class="skill-card-desc">
+      J’ai également optimisé le chargement des dictionnaires en mettant en place 
+      un système de cache utilisant la sérialisation binaire avec 
+      <strong>pickle</strong>. Cette solution réduit le temps de chargement 
+      lors des exécutions suivantes du programme.
+    </p>
+
+    <p class="skill-card-desc">
+      Ainsi, ce projet m’a permis de renforcer mes connaissances autodidactes et 
+  d’apprendre à structurer plus clairement des tâches complexes grâce à une 
+  approche algorithmique.
+    </p>
+
+    <p class="skill-card-desc">
+      <a href="https://github.com/MartialBouyssou/sutom" target="_blank">Voir le projet</a>
+    </p>
         </div>
       </div>
 
@@ -150,7 +198,34 @@
         <button class="panel-back-btn" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Algorithmique & optimisation</h3>
-          <p class="skill-card-desc">Comparer et optimiser des algorithmes.</p>
+         <p class="skill-card-desc">
+      Lors du projet <strong>S1.02</strong> à l’IUT, j’ai travaillé sur l’implémentation 
+      et la comparaison de plusieurs algorithmes. L’objectif était de comprendre 
+      concrètement comment les choix algorithmiques influencent les performances 
+      d’un programme.
+    </p>
+
+    <p class="skill-card-desc">
+      On a développé, avec mon binôme, différentes versions d’algorithmes en Python, notamment 
+      certaines implémentées de manière récursive. Afin de comparer leurs 
+      performances, On a créé un programme permettant de mesurer les temps 
+      d’exécution sur différentes tailles de données.
+    </p>
+
+    <p class="skill-card-desc">
+      Les résultats ont ensuite été analysés à l’aide de graphiques afin de 
+      visualiser l’évolution des temps d’exécution et de mieux comprendre la 
+      complexité des algorithmes étudiés.
+    </p>
+
+    <p class="skill-card-desc">
+      Ce travail m’a permis d’apprendre à analyser un problème algorithmique, 
+      à tester différentes approches et à justifier un choix technique à partir 
+      de données mesurées.
+    </p>
+    <p class="skill-card-desc">
+      <a href="https://github.com/MartialBouyssou/methode_tri" target="_blank">Voir le projet</a>
+    </p>
         </div>
       </div>
 
@@ -158,28 +233,111 @@
         <button class="panel-back-btn" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Modélisation de données & SQL</h3>
-          <p class="skill-card-desc">Modélisation relationnelle et requêtes SQL.</p>
+          <p class="skill-card-desc">
+      Dans le cadre du projet <strong>S1.04</strong>, j’ai travaillé sur 
+      l’analyse d’un jeu de données nécessitant plusieurs étapes : nettoyage, 
+      structuration et exploitation des informations.
+    </p>
+
+    <p class="skill-card-desc">
+      La première étape a consisté à analyser les données afin d’identifier 
+      les incohérences ou valeurs manquantes. Ce travail de nettoyage est 
+      essentiel pour garantir la fiabilité des analyses réalisées ensuite.
+    </p>
+
+    <p class="skill-card-desc">
+      J’ai ensuite conçu un modèle relationnel permettant d’organiser les 
+      informations en plusieurs tables liées entre elles. Cette modélisation 
+      permet de structurer les données de manière logique et d’éviter les 
+      redondances.
+    </p>
+
+    <p class="skill-card-desc">
+      Enfin, j’ai utilisé des requêtes SQL incluant des jointures et des 
+      agrégations (<strong>GROUP BY</strong>) afin d’extraire les informations 
+      nécessaires à la création de graphiques d’analyse.
+    </p>
+
+    <p class="skill-card-desc">
+      Ce projet m’a permis de comprendre l’importance de la modélisation et 
+      de la qualité des données avant toute analyse.
+    </p>
+
+    <p class="skill-card-desc">
+      <a href="medias/Rapport_Projet_SQL.pdf" target="_blank">Voir le projet</a>
+    </p>
         </div>
       </div>
 
       <div class="skill-panel" id="card-bash" data-slide="bottom-left">
         <button class="panel-back-btn" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Scripting & administration système</h3>
-          <p class="skill-card-desc">Automatiser des tâches via Bash / Linux.</p>
+          <h3 class="skill-card-title">Script & administration système</h3>
+          <p class="skill-card-desc">
+      Lors d'un projet (<strong>S1.03</strong>) donné par l'IUT, j’ai développé plusieurs scripts 
+      Bash permettant d’automatiser des opérations sur le système.
+    </p>
+
+    <p class="skill-card-desc">
+      L’un des objectifs du projet était de concevoir des scripts robustes 
+      capables de vérifier les erreurs possibles avant d’exécuter une action. 
+      J’ai notamment mis en place des vérifications sur l’existence des fichiers 
+      ou la validité des paramètres fournis.
+    </p>
+
+    <p class="skill-card-desc">
+      Les scripts utilisent également des <strong>codes de retour explicites</strong> 
+      (comme <strong>exit 1</strong>) afin de signaler les erreurs. Cela permet 
+      de les intégrer plus facilement dans des chaînes de traitement automatisées.
+    </p>
+
+    <p class="skill-card-desc">
+      Ce travail m’a permis de mieux comprendre le fonctionnement des scripts 
+      système et l’importance de la gestion des erreurs dans les outils 
+      d’automatisation.
+    </p>
+
+    <p class="skill-card-desc">
+      <a href="https://github.com/MartialBouyssou/S103-Biblio" target="_blank">Voir le projet</a>
+    </p>
         </div>
       </div>
 
       <div class="skill-panel" id="card-gestion" data-slide="left">
         <button class="panel-back-btn" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Gestion de projet & analyse des besoins</h3>
-          <p class="skill-card-desc">Cadrage, priorisation, objectifs SMART.</p>
+          <h3 class="skill-card-title">Structurer un projet et clarifier un besoin</h3>
+          <p class="skill-card-desc">
+      Dans le cadre du projet <strong>S1.05</strong>, j’ai travaillé sur 
+      l’analyse d’un besoin exprimé de manière assez vague afin de le 
+      transformer en exigences techniques claires.
+    </p>
+
+    <p class="skill-card-desc">
+      Pour structurer ce travail, nous avons utilisé la méthode 
+      <strong>MoSCoW</strong> afin de prioriser les fonctionnalités 
+      (MUST, SHOULD, COULD, WON’T). Cette approche permet de distinguer 
+      les éléments essentiels du projet de ceux qui sont secondaires.
+    </p>
+
+    <p class="skill-card-desc">
+      Nous avons également défini des objectifs <strong>SMART</strong> 
+      afin de rendre les attentes plus précises et mesurables.
+    </p>
+
+    <p class="skill-card-desc">
+      Ce projet m’a permis de comprendre qu’un bon développement commence 
+      par une bonne compréhension du besoin et une structuration claire 
+      des objectifs du projet.
+    </p>
+
+    <p class="skill-card-desc">
+      <a href="medias/dossier-s105.pdf" target="_blank">Voir le projet</a>
+    </p>
         </div>
       </div>
     </div>
-
-    <!-- Mobile cards -->
+    <!-- Partie responsive fait à l'IA... -->
     <div class="page-inner mobile-only">
       <p class="section-eyebrow">Compétences techniques</p>
       <h2 class="section-title">Hard Skills</h2>
@@ -213,14 +371,10 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       PAGE : SOFT SKILLS
-  ══════════════════════════════════════════ -->
   <section id="soft-skills" class="page" data-page="soft-skills">
     <div class="hub-bg-grid soft-hub-bg" aria-hidden="true"></div>
     <button class="back-btn soft-home-btn" data-goto="home" type="button">← Accueil</button>
 
-    <!-- Desktop hub -->
     <div class="desktop-only">
       <div class="hub-center-card" id="softHubCenter">
         <p class="section-eyebrow">Compétences comportementales</p>
@@ -249,7 +403,6 @@
         <span class="anchor-label">Organisation</span>
       </button>
 
-      <!-- Soft panels -->
       <div class="skill-panel soft-panel" id="soft-problem" data-slide="top">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
@@ -291,7 +444,6 @@
       </div>
     </div>
 
-    <!-- Mobile cards -->
     <div class="page-inner mobile-only">
       <p class="section-eyebrow">Compétences comportementales</p>
       <h2 class="section-title">Soft Skills</h2>
