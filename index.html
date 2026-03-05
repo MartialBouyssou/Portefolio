@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- ══════════════════════════════════════════
+       PAGE : HOME
+  ══════════════════════════════════════════ -->
+  <section id="home" class="page" data-page="home">
+    <nav class="nav-home">
+      <span class="nav-logo">MB</span>
+      <ul class="nav-links">
+        <li><a href="#" data-goto="home" class="nav-link">Accueil</a></li>
+        <li><a href="#" data-goto="about" class="nav-link">À propos</a></li>
+        <li><a href="#" data-goto="hard-skills" class="nav-link">Hard Skills</a></li>
+        <li><a href="#" data-goto="soft-skills" class="nav-link">Soft Skills</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-container">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <p class="hero-eyebrow">Bienvenue sur mon</p>
+        <h1 class="hero-title">
+          <span class="hero-title-line">Port</span><span class="hero-title-accent">folio</span>
+        </h1>
+        <p class="hero-tagline">Développeur · Analyste · Curieux</p>
+
+        <div class="hero-cta-group">
+          <button class="btn-primary" data-goto="hard-skills" type="button">Voir mes compétences</button>
+          <button class="btn-secondary" data-goto="about" type="button">En savoir plus</button>
+        </div>
+      </div>
+
+      <div class="hero-floating-tags" aria-hidden="true">
+        <span class="floating-tag" style="--delay:0s;--x:10%;--y:20%">Python</span>
+        <span class="floating-tag" style="--delay:.4s;--x:80%;--y:15%">SQL</span>
+        <span class="floating-tag" style="--delay:.8s;--x:75%;--y:75%">Bash</span>
+        <span class="floating-tag" style="--delay:1.2s;--x:12%;--y:78%">Algo</span>
+        <span class="floating-tag" style="--delay:1.6s;--x:50%;--y:88%">Git</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PAGE : ABOUT
+  ══════════════════════════════════════════ -->
+  <section id="about" class="page" data-page="about">
+    <div class="page-inner">
+      <button class="back-btn" data-goto="home" type="button">← Accueil</button>
+
+      <div class="about-layout">
+        <div class="about-text-col">
+          <p class="section-eyebrow">À propos de moi</p>
+          <h2 class="section-title">Qui suis-je ?</h2>
+          <div class="about-body">
+            <p>Remplace ce texte par ta présentation (parcours, motivation, objectifs).</p>
+            <p>2–3 paragraphes courts, orientés recruteur.</p>
+          </div>
+        </div>
+
+        <div class="about-visual-col">
+          <div class="about-avatar-ring">
+            <div class="about-avatar-placeholder">MB</div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-count="5">0</span>
+              <span class="stat-label">Projets</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Langages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PAGE : HARD SKILLS (HUB)
+       Correction : le bouton Accueil de la page hard-skills
+       est maintenant caché quand un panel est ouvert.
+  ══════════════════════════════════════════ -->
+  <section id="hard-skills" class="page" data-page="hard-skills">
+    <div class="hub-bg-grid" aria-hidden="true"></div>
+
+    <!-- Bouton de PAGE : retour accueil -->
+    <button class="back-btn hub-home-btn" data-goto="home" type="button">← Accueil</button>
+
+    <!-- Hub central -->
+    <div class="hub-center-card" id="hubCenter">
+      <p class="section-eyebrow">Compétences techniques</p>
+      <h2 class="hub-card-title">Hard<br>Skills</h2>
+      <p class="hub-card-subtitle">Clique sur une compétence</p>
+    </div>
+
+    <!-- Ancres (ouvrent les panels) -->
+    <button class="orbit-anchor anchor-top" data-target="card-dev" type="button">
+      <span class="anchor-icon">↑</span>
+      <span class="anchor-label">Développement logiciel</span>
+    </button>
+
+    <button class="orbit-anchor anchor-right" data-target="card-algo" type="button">
+      <span class="anchor-label">Algorithmique</span>
+      <span class="anchor-icon">→</span>
+    </button>
+
+    <button class="orbit-anchor anchor-bottom-right" data-target="card-sql" type="button">
+      <span class="anchor-label">Modélisation de données</span>
+      <span class="anchor-icon">↘</span>
+    </button>
+
+    <button class="orbit-anchor anchor-bottom-left" data-target="card-bash" type="button">
+      <span class="anchor-icon">↙</span>
+      <span class="anchor-label">Scripting système</span>
+    </button>
+
+    <button class="orbit-anchor anchor-left" data-target="card-gestion" type="button">
+      <span class="anchor-icon">←</span>
+      <span class="anchor-label">Gestion de projet</span>
+    </button>
+
+    <!-- PANELS -->
+    <div class="skill-panel" id="card-dev" data-slide="top">
+      <button class="panel-back-btn" type="button">← Retour au hub</button>
+      <div class="skill-panel-inner">
+        <div class="skill-card-header">
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">Qualité</span>
+          <span class="skill-badge">Git</span>
+        </div>
+        <h3 class="skill-card-title">Développement logiciel orienté qualité</h3>
+        <p class="skill-card-desc">Concevoir une application structurée, maintenable et robuste, avec une attention particulière à la qualité et à la fiabilité.</p>
+
+        <div class="skill-card-body">
+          <div class="skill-block">
+            <h4>🎯 Projet</h4>
+            <p>Jeu SUTOM en console (Python).</p>
+          </div>
+          <div class="skill-block">
+            <h4>🔧 Contributions</h4>
+            <ul>
+              <li>Architecture modulaire : <code>core</code>, <code>ui</code>, <code>persistence</code></li>
+              <li>Typage statique : <code>typing</code>, <code>Optional</code></li>
+              <li>Cache binaire avec <code>pickle</code></li>
+              <li>Gestion d’erreurs + persistance des scores</li>
+            </ul>
+          </div>
+          <div class="skill-block">
+            <h4>📦 Livrables</h4>
+            <p>Jeu console jouable, code versionné, doc.</p>
+          </div>
+        </div>
+
+        <a class="btn-card" href="#" target="_blank" rel="noopener">Voir sur GitHub →</a>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="card-algo" data-slide="right">
+      <button class="panel-back-btn" type="button">← Retour au hub</button>
+      <div class="skill-panel-inner">
+        <div class="skill-card-header">
+          <span class="skill-badge">Algorithmes</span>
+          <span class="skill-badge">Benchmarks</span>
+          <span class="skill-badge">Complexité</span>
+        </div>
+        <h3 class="skill-card-title">Algorithmique & optimisation</h3>
+        <p class="skill-card-desc">Comparer des algorithmes, mesurer leur performance, et analyser leur complexité pour choisir la solution adaptée.</p>
+
+        <div class="skill-card-body">
+          <div class="skill-block"><h4>🎯 Projet</h4><p>Étude comparative d’algorithmes de tri (Python).</p></div>
+          <div class="skill-block">
+            <h4>🔧 Contributions</h4>
+            <ul>
+              <li>Implémentation : bulles, insertion, fusion (récursif)</li>
+              <li>Benchmarks sur tailles variables</li>
+              <li>Analyse temporelle : O(n²) vs O(n log n)</li>
+            </ul>
+          </div>
+          <div class="skill-block"><h4>📦 Livrables</h4><p>Scripts + résultats/graphes + analyse.</p></div>
+        </div>
+
+        <a class="btn-card" href="#" target="_blank" rel="noopener">Voir sur GitHub →</a>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="card-sql" data-slide="bottom-right">
+      <button class="panel-back-btn" type="button">← Retour au hub</button>
+      <div class="skill-panel-inner">
+        <div class="skill-card-header">
+          <span class="skill-badge">SQL</span>
+          <span class="skill-badge">3FN</span>
+          <span class="skill-badge">Analyse</span>
+        </div>
+        <h3 class="skill-card-title">Modélisation de données & SQL</h3>
+        <p class="skill-card-desc">Modéliser un schéma relationnel normalisé et produire des indicateurs analytiques via des requêtes SQL.</p>
+
+        <div class="skill-card-body">
+          <div class="skill-block"><h4>🎯 Projet</h4><p>Analyse des ventes mondiales de jeux vidéo (CSV → SQL).</p></div>
+          <div class="skill-block">
+            <h4>🔧 Contributions</h4>
+            <ul>
+              <li>Nettoyage CSV</li>
+              <li>Modélisation relationnelle 3FN</li>
+              <li>Requêtes complexes : jointures, agrégations</li>
+            </ul>
+          </div>
+          <div class="skill-block"><h4>📦 Livrables</h4><p>Schéma + scripts SQL + rapport d’indicateurs.</p></div>
+        </div>
+
+        <a class="btn-card" href="#" target="_blank" rel="noopener">Voir sur GitHub →</a>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="card-bash" data-slide="bottom-left">
+      <button class="panel-back-btn" type="button">← Retour au hub</button>
+      <div class="skill-panel-inner">
+        <div class="skill-card-header">
+          <span class="skill-badge">Bash</span>
+          <span class="skill-badge">Linux</span>
+          <span class="skill-badge">Robustesse</span>
+        </div>
+        <h3 class="skill-card-title">Scripting & administration système</h3>
+        <p class="skill-card-desc">Automatiser des tâches et sécuriser les traitements via des scripts Bash robustes (codes retour, erreurs, fichiers).</p>
+
+        <div class="skill-card-body">
+          <div class="skill-block"><h4>🎯 Projet</h4><p>Scripts Bash de gestion de bibliothèque.</p></div>
+          <div class="skill-block">
+            <h4>🔧 Contributions</h4>
+            <ul>
+              <li>Gestion des codes de retour</li>
+              <li>Manipulation de fichiers système</li>
+              <li>Calcul automatisé des pénalités</li>
+            </ul>
+          </div>
+          <div class="skill-block"><h4>📦 Livrables</h4><p>Suite de scripts + doc + tests.</p></div>
+        </div>
+
+        <a class="btn-card" href="#" target="_blank" rel="noopener">Voir sur GitHub →</a>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="card-gestion" data-slide="left">
+      <button class="panel-back-btn" type="button">← Retour au hub</button>
+      <div class="skill-panel-inner">
+        <div class="skill-card-header">
+          <span class="skill-badge">SMART</span>
+          <span class="skill-badge">MoSCoW</span>
+          <span class="skill-badge">Cadrage</span>
+        </div>
+        <h3 class="skill-card-title">Gestion de projet & analyse des besoins</h3>
+        <p class="skill-card-desc">Recueillir les besoins, cadrer un projet et structurer les livrables (priorisation, exigences, cahier des charges).</p>
+
+        <div class="skill-card-body">
+          <div class="skill-block"><h4>🎯 Projet</h4><p>Digitalisation du prêt de matériel.</p></div>
+          <div class="skill-block">
+            <h4>🔧 Contributions</h4>
+            <ul>
+              <li>Analyse des besoins</li>
+              <li>Objectifs SMART</li>
+              <li>Priorisation MoSCoW</li>
+              <li>Cahier des charges fonctionnel</li>
+            </ul>
+          </div>
+          <div class="skill-block"><h4>📦 Livrables</h4><p>CDC fonctionnel + matrices SMART/MoSCoW.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PAGE : SOFT SKILLS
+  ══════════════════════════════════════════ -->
+  <section id="soft-skills" class="page" data-page="soft-skills">
+    <div class="page-inner">
+      <button class="back-btn" data-goto="home" type="button">← Accueil</button>
+
+      <p class="section-eyebrow">Compétences comportementales</p>
+      <h2 class="section-title">Soft Skills</h2>
+
+      <div class="soft-grid">
+        <div class="soft-card" style="--i:0"><div class="soft-icon">🧩</div><h3>Résolution de problèmes complexes</h3><p>Décomposition, contraintes, solution structurée.</p></div>
+        <div class="soft-card" style="--i:1"><div class="soft-icon">📐</div><h3>Rigueur</h3><p>Qualité, robustesse, cohérence.</p></div>
+        <div class="soft-card" style="--i:2"><div class="soft-icon">🔄</div><h3>Adaptabilité</h3><p>Capacité à changer de contexte rapidement.</p></div>
+        <div class="soft-card" style="--i:3"><div class="soft-icon">📊</div><h3>Esprit critique</h3><p>Comparer, mesurer, justifier.</p></div>
+        <div class="soft-card" style="--i:4"><div class="soft-icon">🗂️</div><h3>Organisation</h3><p>Prioriser et produire des livrables clairs.</p></div>
+        <div class="soft-card" style="--i:5"><div class="soft-icon">🚀</div><h3>Curiosité</h3><p>Apprentissage continu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
