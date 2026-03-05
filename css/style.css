@@ -93,8 +93,13 @@ body:has(a:hover,button:hover) .cursor-follower{
   background:var(--c-grad);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  user-select:none;
 }
-.nav-links{ list-style:none; display:flex; gap:2rem; }
+.nav-links{
+  list-style:none; 
+  display:flex; gap:2rem; 
+  user-select:none;
+}
 .nav-link{
   color:var(--c-muted);
   text-decoration:none;
@@ -136,6 +141,7 @@ body:has(a:hover,button:hover) .cursor-follower{
 .hero-eyebrow{
   font-size:.9rem; letter-spacing:.2em; text-transform:uppercase;
   color:var(--c-muted); margin-bottom:1rem;
+  user-select:none;
 }
 .hero-title{
   font-size:clamp(4rem,12vw,9rem);
@@ -144,17 +150,22 @@ body:has(a:hover,button:hover) .cursor-follower{
   letter-spacing:-.03em;
   margin-bottom:1.5rem;
 }
-.hero-title-line{ color:var(--c-text); }
+.hero-title-line{
+  color:var(--c-text); 
+  user-select:none;
+}
 .hero-title-accent{
   background:var(--c-grad);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  user-select:none;
 }
 .hero-tagline{
   font-size:1.1rem;
   color:var(--c-muted);
   letter-spacing:.15em;
   margin-bottom:3rem;
+  user-select:none;
 }
 .hero-cta-group{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 .hero-floating-tags{ position:absolute; inset:0; pointer-events:none; }
@@ -216,6 +227,7 @@ body:has(a:hover,button:hover) .cursor-follower{
 .section-eyebrow{
   font-size:.8rem; letter-spacing:.25em; text-transform:uppercase;
   color:var(--c-accent); margin-bottom:.5rem;
+  user-select:none;
 }
 .section-title{
   font-size:clamp(2rem,5vw,3.5rem);
@@ -254,6 +266,7 @@ body:has(a:hover,button:hover) .cursor-follower{
   background:var(--c-grad);
   -webkit-background-clip:text;
   -webkit-text-fill-color:white;
+  user-select:none;
 }
 .about-stats{ display:flex; justify-content:center; gap:2rem; }
 .stat-item{ text-align:center; }
@@ -264,8 +277,14 @@ body:has(a:hover,button:hover) .cursor-follower{
   background:var(--c-grad);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  user-select:none;
 }
-.stat-label{ font-size:.8rem; color:var(--c-muted); letter-spacing:.1em; }
+.stat-label{
+  font-size:.8rem; 
+  color:var(--c-muted);
+  letter-spacing:.1em; 
+  user-select:none;
+}
 
 /* Hub bg */
 .hub-bg-grid{
@@ -307,12 +326,14 @@ body:has(a:hover,button:hover) .cursor-follower{
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   margin:.6rem 0;
+  user-select:none;
 }
 .hub-card-subtitle{
   font-size:.9rem;
   color:var(--c-muted);
   margin-top:.75rem;
   letter-spacing:.06em;
+  user-select:none;
 }
 
 /* Anchors */
