@@ -1,35 +1,43 @@
 'use strict';
 
-// ─────────────────────────────────────────────
-// 1) CURSEUR
-// ─────────────────────────────────────────────
-const cursor   = document.getElementById('cursor');
+const IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
+
+/* Cursor (desktop) */
+const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
-let mx = 0, my = 0, fx = 0, fy = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px';
-  cursor.style.top  = my + 'px';
-});
+if (!IS_MOBILE && cursor && follower) {
+  let mx = 0, my = 0, fx = 0, fy = 0;
 
-(function loop() {
-  fx += (mx - fx) * 0.12;
-  fy += (my - fy) * 0.12;
-  follower.style.left = fx + 'px';
-  follower.style.top  = fy + 'px';
-  requestAnimationFrame(loop);
-})();
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
 
-// ─────────────────────────────────────────────
-// 2) NAVIGATION ENTRE PAGES
-// ─────────────────────────────────────────────
-let currentPageId   = 'home';
+  (function loop() {
+    fx += (mx - fx) * 0.12;
+    fy += (my - fy) * 0.12;
+    follower.style.left = fx + 'px';
+    follower.style.top  = fy + 'px';
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* SPA navigation (desktop only) */
+let currentPageId = 'home';
 let isTransitioning = false;
 
-function goToPage(targetId) {
-  if (targetId === currentPageId || isTransitioning) return;
+function updateNavLinks(id) {
+  document.querySelectorAll('.nav-link').forEach(l =>
+    l.classList.toggle('active', l.dataset.goto === id)
+  );
+}
 
+function goToPage(targetId) {
+  if (IS_MOBILE) return;
+
+  if (targetId === currentPageId || isTransitioning) return;
   const fromPage = document.getElementById(currentPageId);
   const toPage   = document.getElementById(targetId);
   if (!fromPage || !toPage) return;
@@ -42,7 +50,8 @@ function goToPage(targetId) {
     toPage.classList.add('active');
     currentPageId = targetId;
 
-    if (targetId === 'hard-skills') resetHub();
+    if (targetId === 'hard-skills') resetHardHub();
+    if (targetId === 'soft-skills') resetSoftHub();
     if (targetId === 'about') startCounters();
     updateNavLinks(targetId);
 
@@ -50,57 +59,56 @@ function goToPage(targetId) {
   }, 300);
 }
 
+/* data-goto binding */
 document.querySelectorAll('[data-goto]').forEach(el => {
   el.addEventListener('click', (e) => {
     e.preventDefault();
-    goToPage(el.dataset.goto);
+    const id = el.dataset.goto;
+
+    if (IS_MOBILE) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    goToPage(id);
   });
 });
 
-function updateNavLinks(id) {
-  document.querySelectorAll('.nav-link').forEach(l =>
-    l.classList.toggle('active', l.dataset.goto === id)
-  );
-}
+/* Desktop init: home is already active in HTML */
+if (!IS_MOBILE) updateNavLinks('home');
 
-// ─────────────────────────────────────────────
-// 3) HARD SKILLS HUB
-// ─────────────────────────────────────────────
+/* Hard hub */
 const hardSkillsPage = document.getElementById('hard-skills');
-const hubCenter      = document.getElementById('hubCenter');
-const skillPanels    = document.querySelectorAll('.skill-panel');
-const orbitBtns      = document.querySelectorAll('.orbit-anchor');
+const hardHubCenter  = document.getElementById('hubCenter');
+let hardActivePanel = null;
 
-let activePanel = null;
-
-function openPanel(targetId) {
+function resetHardHub() {
+  if (!hardSkillsPage || !hardHubCenter) return;
+  hardSkillsPage.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
+  hardHubCenter.classList.remove('hidden');
+  hardSkillsPage.classList.remove('panel-open');
+  hardActivePanel = null;
+}
+function openHardPanel(targetId) {
   const panel = document.getElementById(targetId);
-  if (!panel) return;
+  if (!panel || !hardSkillsPage || !hardHubCenter) return;
 
-  hubCenter.classList.add('hidden');
+  hardHubCenter.classList.add('hidden');
   hardSkillsPage.classList.add('panel-open');
 
   panel.classList.add('active');
-  activePanel = panel;
+  hardActivePanel = panel;
 }
+function closeHardPanel() {
+  if (!hardActivePanel || !hardSkillsPage || !hardHubCenter) return;
 
-function closePanel() {
-  if (!activePanel) return;
+  const closing = hardActivePanel;
+  hardActivePanel = null;
 
-  const closing = activePanel;
-  activePanel = null;
-
-  // Réactive immédiatement tout ce qui est hub (ancres + bouton accueil)
   hardSkillsPage.classList.remove('panel-open');
-
-  // Lance la transition de sortie
   closing.classList.remove('active');
 
-  // À la fin, on ré-affiche la carte centrale
-  const onEnd = () => {
-    hubCenter.classList.remove('hidden');
-  };
-
+  const onEnd = () => hardHubCenter.classList.remove('hidden');
   const fallback = setTimeout(onEnd, 650);
   closing.addEventListener('transitionend', () => {
     clearTimeout(fallback);
@@ -108,64 +116,80 @@ function closePanel() {
   }, { once: true });
 }
 
-function resetHub() {
-  skillPanels.forEach(p => p.classList.remove('active'));
-  hubCenter.classList.remove('hidden');
-  hardSkillsPage.classList.remove('panel-open');
-  activePanel = null;
+if (!IS_MOBILE && hardSkillsPage) {
+  hardSkillsPage.querySelectorAll('.orbit-anchor').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openHardPanel(btn.dataset.target);
+    });
+  });
+
+  hardSkillsPage.querySelectorAll('.panel-back-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeHardPanel();
+    });
+  });
 }
 
-orbitBtns.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openPanel(btn.dataset.target);
+/* Soft hub */
+const softSkillsPage = document.getElementById('soft-skills');
+const softHubCenter  = document.getElementById('softHubCenter');
+let softActivePanel = null;
+
+function resetSoftHub() {
+  if (!softSkillsPage || !softHubCenter) return;
+  softSkillsPage.querySelectorAll('.soft-panel').forEach(p => p.classList.remove('active'));
+  softHubCenter.classList.remove('hidden');
+  softSkillsPage.classList.remove('panel-open');
+  softActivePanel = null;
+}
+function openSoftPanel(targetId) {
+  const panel = document.getElementById(targetId);
+  if (!panel || !softSkillsPage || !softHubCenter) return;
+
+  softHubCenter.classList.add('hidden');
+  softSkillsPage.classList.add('panel-open');
+
+  panel.classList.add('active');
+  softActivePanel = panel;
+}
+function closeSoftPanel() {
+  if (!softActivePanel || !softSkillsPage || !softHubCenter) return;
+
+  const closing = softActivePanel;
+  softActivePanel = null;
+
+  softSkillsPage.classList.remove('panel-open');
+  closing.classList.remove('active');
+
+  const onEnd = () => softHubCenter.classList.remove('hidden');
+  const fallback = setTimeout(onEnd, 650);
+  closing.addEventListener('transitionend', () => {
+    clearTimeout(fallback);
+    onEnd();
+  }, { once: true });
+}
+
+if (!IS_MOBILE && softSkillsPage) {
+  softSkillsPage.querySelectorAll('.soft-anchor').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openSoftPanel(btn.dataset.target);
+    });
   });
-});
 
-// Retour au hub depuis un panel
-document.querySelectorAll('.panel-back-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    closePanel();
+  softSkillsPage.querySelectorAll('.soft-panel-back').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeSoftPanel();
+    });
   });
-});
+}
 
-// ─────────────────────────────────────────────
-// 4) PARALLAXE HERO
-// ─────────────────────────────────────────────
-const heroContent = document.querySelector('.hero-content');
-const heroBg      = document.querySelector('.hero-bg-grid');
-const heroTags    = document.querySelector('.hero-floating-tags');
-
-document.addEventListener('mousemove', (e) => {
-  if (currentPageId !== 'home') return;
-
-  const dx = (e.clientX - window.innerWidth  / 2) / (window.innerWidth  / 2);
-  const dy = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-
-  if (heroContent) heroContent.style.transform = `translate(${dx * -8}px, ${dy * -8}px)`;
-  if (heroBg)      heroBg.style.transform      = `translate(${dx * 14}px, ${dy * 14}px)`;
-  if (heroTags)    heroTags.style.transform    = `translate(${dx * -18}px, ${dy * -18}px)`;
-});
-
-// ─────────────────────────────────────────────
-// 5) TILT SOFT CARDS
-// ─────────────────────────────────────────────
-document.querySelectorAll('.soft-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    card.style.transform =
-      `perspective(600px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) translateY(-4px)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-});
-
-// ─────────────────────────────────────────────
-// 6) COMPTEURS ABOUT
-// ─────────────────────────────────────────────
+/* About counters */
 let countersStarted = false;
 function startCounters() {
   if (countersStarted) return;
@@ -173,7 +197,9 @@ function startCounters() {
 
   document.querySelectorAll('.stat-number').forEach(el => {
     const target = parseInt(el.dataset.count, 10);
-    let step = 0; const steps = 40;
+    let step = 0;
+    const steps = 40;
+
     const timer = setInterval(() => {
       step++;
       el.textContent = Math.min(Math.round(target / steps * step), target);
@@ -181,23 +207,3 @@ function startCounters() {
     }, 1200 / steps);
   });
 }
-
-// ─────────────────────────────────────────────
-// 7) CLAVIER
-// ─────────────────────────────────────────────
-document.addEventListener('keydown', (e) => {
-  if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-  const map = { KeyH:'home', KeyA:'about', KeyS:'hard-skills', KeyL:'soft-skills' };
-  if (map[e.code]) goToPage(map[e.code]);
-
-  if (e.key === 'Escape' && currentPageId === 'hard-skills' && activePanel) {
-    closePanel();
-  }
-});
-
-// ─────────────────────────────────────────────
-// 8) INIT
-// ─────────────────────────────────────────────
-document.getElementById('home').classList.add('active');
-updateNavLinks('home');
