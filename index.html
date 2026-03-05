@@ -11,20 +11,31 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
 
+  <!-- MODALE MOBILE -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true">
+      <button class="modal-close-btn" id="modalCloseBtn" type="button" aria-label="Fermer">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
   <!-- ══════════════════════════════════════════
        PAGE : HOME
-       ✅ FIX ÉCRAN NOIR : on met "active" par défaut au chargement
-  ══════════════════════════════════════════ -->
+  ═══════════════════════   ══════════════════ -->
   <section id="home" class="page active" data-page="home">
-    <nav class="nav-home">
-      <span class="nav-logo">MB</span>
-      <ul class="nav-links">
-        <li><a href="#" data-goto="home" class="nav-link">Accueil</a></li>
-        <li><a href="#" data-goto="about" class="nav-link">À propos</a></li>
-        <li><a href="#" data-goto="hard-skills" class="nav-link">Hard Skills</a></li>
-        <li><a href="#" data-goto="soft-skills" class="nav-link">Soft Skills</a></li>
-      </ul>
-    </nav>
+
+    <!-- Nav uniquement desktop -->
+    <div class="desktop-only">
+      <nav class="nav-home">
+        <span class="nav-logo">MB</span>
+        <ul class="nav-links">
+          <li><a href="#" data-goto="home" class="nav-link">Accueil</a></li>
+          <li><a href="#" data-goto="about" class="nav-link">À propos</a></li>
+          <li><a href="#" data-goto="hard-skills" class="nav-link">Hard Skills</a></li>
+          <li><a href="#" data-goto="soft-skills" class="nav-link">Soft Skills</a></li>
+        </ul>
+      </nav>
+    </div>
 
     <div class="hero-container">
       <div class="hero-bg-grid" aria-hidden="true"></div>
@@ -91,77 +102,113 @@
   </section>
 
   <!-- ══════════════════════════════════════════
-       PAGE : HARD SKILLS (hub desktop)
+       PAGE : HARD SKILLS
   ══════════════════════════════════════════ -->
   <section id="hard-skills" class="page" data-page="hard-skills">
     <div class="hub-bg-grid" aria-hidden="true"></div>
     <button class="back-btn hub-home-btn" data-goto="home" type="button">← Accueil</button>
 
-    <div class="hub-center-card" id="hubCenter">
+    <!-- Desktop hub -->
+    <div class="desktop-only">
+      <div class="hub-center-card" id="hubCenter">
+        <p class="section-eyebrow">Compétences techniques</p>
+        <h2 class="hub-card-title">Hard<br>Skills</h2>
+        <p class="hub-card-subtitle">Clique sur une compétence</p>
+      </div>
+
+      <button class="orbit-anchor anchor-top" data-target="card-dev" type="button">
+        <span class="anchor-icon">↑</span>
+        <span class="anchor-label">Développement logiciel</span>
+      </button>
+      <button class="orbit-anchor anchor-right" data-target="card-algo" type="button">
+        <span class="anchor-label">Algorithmique</span>
+        <span class="anchor-icon">→</span>
+      </button>
+      <button class="orbit-anchor anchor-bottom-right" data-target="card-sql" type="button">
+        <span class="anchor-label">Modélisation de données</span>
+        <span class="anchor-icon">↘</span>
+      </button>
+      <button class="orbit-anchor anchor-bottom-left" data-target="card-bash" type="button">
+        <span class="anchor-icon">↙</span>
+        <span class="anchor-label">Scripting système</span>
+      </button>
+      <button class="orbit-anchor anchor-left" data-target="card-gestion" type="button">
+        <span class="anchor-icon">←</span>
+        <span class="anchor-label">Gestion de projet</span>
+      </button>
+
+      <!-- Panels hard -->
+      <div class="skill-panel" id="card-dev" data-slide="top">
+        <button class="panel-back-btn" type="button">← Retour au hub</button>
+        <div class="skill-panel-inner">
+          <h3 class="skill-card-title">Développement logiciel orienté qualité</h3>
+          <p class="skill-card-desc">Concevoir une application structurée, maintenable et robuste.</p>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="card-algo" data-slide="right">
+        <button class="panel-back-btn" type="button">← Retour au hub</button>
+        <div class="skill-panel-inner">
+          <h3 class="skill-card-title">Algorithmique & optimisation</h3>
+          <p class="skill-card-desc">Comparer et optimiser des algorithmes.</p>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="card-sql" data-slide="bottom-right">
+        <button class="panel-back-btn" type="button">← Retour au hub</button>
+        <div class="skill-panel-inner">
+          <h3 class="skill-card-title">Modélisation de données & SQL</h3>
+          <p class="skill-card-desc">Modélisation relationnelle et requêtes SQL.</p>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="card-bash" data-slide="bottom-left">
+        <button class="panel-back-btn" type="button">← Retour au hub</button>
+        <div class="skill-panel-inner">
+          <h3 class="skill-card-title">Scripting & administration système</h3>
+          <p class="skill-card-desc">Automatiser des tâches via Bash / Linux.</p>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="card-gestion" data-slide="left">
+        <button class="panel-back-btn" type="button">← Retour au hub</button>
+        <div class="skill-panel-inner">
+          <h3 class="skill-card-title">Gestion de projet & analyse des besoins</h3>
+          <p class="skill-card-desc">Cadrage, priorisation, objectifs SMART.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile cards -->
+    <div class="page-inner mobile-only">
       <p class="section-eyebrow">Compétences techniques</p>
-      <h2 class="hub-card-title">Hard<br>Skills</h2>
-      <p class="hub-card-subtitle">Clique sur une compétence</p>
-    </div>
-
-    <button class="orbit-anchor anchor-top" data-target="card-dev" type="button">
-      <span class="anchor-icon">↑</span>
-      <span class="anchor-label">Développement logiciel</span>
-    </button>
-    <button class="orbit-anchor anchor-right" data-target="card-algo" type="button">
-      <span class="anchor-label">Algorithmique</span>
-      <span class="anchor-icon">→</span>
-    </button>
-    <button class="orbit-anchor anchor-bottom-right" data-target="card-sql" type="button">
-      <span class="anchor-label">Modélisation de données</span>
-      <span class="anchor-icon">↘</span>
-    </button>
-    <button class="orbit-anchor anchor-bottom-left" data-target="card-bash" type="button">
-      <span class="anchor-icon">↙</span>
-      <span class="anchor-label">Scripting système</span>
-    </button>
-    <button class="orbit-anchor anchor-left" data-target="card-gestion" type="button">
-      <span class="anchor-icon">←</span>
-      <span class="anchor-label">Gestion de projet</span>
-    </button>
-
-    <!-- Panels hard -->
-    <div class="skill-panel" id="card-dev" data-slide="top">
-      <button class="panel-back-btn" type="button">← Retour au hub</button>
-      <div class="skill-panel-inner">
-        <h3 class="skill-card-title">Développement logiciel orienté qualité</h3>
-        <p class="skill-card-desc">Concevoir une application structurée, maintenable et robuste.</p>
-      </div>
-    </div>
-
-    <div class="skill-panel" id="card-algo" data-slide="right">
-      <button class="panel-back-btn" type="button">← Retour au hub</button>
-      <div class="skill-panel-inner">
-        <h3 class="skill-card-title">Algorithmique & optimisation</h3>
-        <p class="skill-card-desc">Comparer et optimiser des algorithmes.</p>
-      </div>
-    </div>
-
-    <div class="skill-panel" id="card-sql" data-slide="bottom-right">
-      <button class="panel-back-btn" type="button">← Retour au hub</button>
-      <div class="skill-panel-inner">
-        <h3 class="skill-card-title">Modélisation de données & SQL</h3>
-        <p class="skill-card-desc">Modélisation relationnelle et requêtes SQL.</p>
-      </div>
-    </div>
-
-    <div class="skill-panel" id="card-bash" data-slide="bottom-left">
-      <button class="panel-back-btn" type="button">← Retour au hub</button>
-      <div class="skill-panel-inner">
-        <h3 class="skill-card-title">Scripting & administration système</h3>
-        <p class="skill-card-desc">Automatiser des tâches via Bash / Linux.</p>
-      </div>
-    </div>
-
-    <div class="skill-panel" id="card-gestion" data-slide="left">
-      <button class="panel-back-btn" type="button">← Retour au hub</button>
-      <div class="skill-panel-inner">
-        <h3 class="skill-card-title">Gestion de projet & analyse des besoins</h3>
-        <p class="skill-card-desc">Cadrage, priorisation, objectifs SMART.</p>
+      <h2 class="section-title">Hard Skills</h2>
+      <div class="skills-grid">
+        <button class="skill-card-mobile" data-modal="card-dev" type="button">
+          <div class="skill-icon">💻</div>
+          <h3>Développement logiciel</h3>
+          <p>Concevoir une application structurée, maintenable et robuste.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="card-algo" type="button">
+          <div class="skill-icon">🧮</div>
+          <h3>Algorithmique</h3>
+          <p>Comparer et optimiser des algorithmes.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="card-sql" type="button">
+          <div class="skill-icon">🗄️</div>
+          <h3>Modélisation de données</h3>
+          <p>Modélisation relationnelle et requêtes SQL.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="card-bash" type="button">
+          <div class="skill-icon">⚙️</div>
+          <h3>Scripting système</h3>
+          <p>Automatiser des tâches via Bash / Linux.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="card-gestion" type="button">
+          <div class="skill-icon">📋</div>
+          <h3>Gestion de projet</h3>
+          <p>Cadrage, priorisation, objectifs SMART.</p>
+        </button>
       </div>
     </div>
   </section>
@@ -248,13 +295,37 @@
     <div class="page-inner mobile-only">
       <p class="section-eyebrow">Compétences comportementales</p>
       <h2 class="section-title">Soft Skills</h2>
-      <div class="soft-grid">
-        <div class="soft-card"><div class="soft-icon">🧩</div><h3>Résolution</h3><p>Décomposer, structurer, résoudre.</p></div>
-        <div class="soft-card"><div class="soft-icon">📐</div><h3>Rigueur</h3><p>Qualité et finitions.</p></div>
-        <div class="soft-card"><div class="soft-icon">🔄</div><h3>Adaptabilité</h3><p>Changer de contexte facilement.</p></div>
-        <div class="soft-card"><div class="soft-icon">📊</div><h3>Analyse</h3><p>Comparer, mesurer, justifier.</p></div>
-        <div class="soft-card"><div class="soft-icon">🗂️</div><h3>Organisation</h3><p>Prioriser et livrer.</p></div>
-        <div class="soft-card"><div class="soft-icon">🚀</div><h3>Curiosité</h3><p>Apprentissage continu.</p></div>
+      <div class="skills-grid">
+        <button class="skill-card-mobile" data-modal="soft-problem" type="button">
+          <div class="skill-icon">🧩</div>
+          <h3>Résolution</h3>
+          <p>Décomposer, structurer, résoudre.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="soft-rigor" type="button">
+          <div class="skill-icon">📐</div>
+          <h3>Rigueur</h3>
+          <p>Qualité et finitions.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="soft-adapt" type="button">
+          <div class="skill-icon">🔄</div>
+          <h3>Adaptabilité</h3>
+          <p>Changer de contexte facilement.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="soft-critical" type="button">
+          <div class="skill-icon">📊</div>
+          <h3>Analyse</h3>
+          <p>Comparer, mesurer, justifier.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="soft-organize" type="button">
+          <div class="skill-icon">🗂️</div>
+          <h3>Organisation</h3>
+          <p>Prioriser et livrer.</p>
+        </button>
+        <button class="skill-card-mobile" data-modal="" type="button" style="opacity:.5;pointer-events:none">
+          <div class="skill-icon">🚀</div>
+          <h3>Curiosité</h3>
+          <p>Apprentissage continu.</p>
+        </button>
       </div>
     </div>
   </section>
