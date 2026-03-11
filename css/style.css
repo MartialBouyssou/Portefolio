@@ -310,7 +310,7 @@ body:has(a:hover, button:hover) .cursor-follower {
   align-items: start;
 }
 
-.about-body p { color: var(--c-muted); line-height: 1.8; margin-bottom: 1rem; }
+.about-body p { color: var(--c-muted); line-height: 1.8; margin-bottom: 0.9rem; /*Parce que mon texte est trop long...*/ } 
 
 .about-avatar-ring {
   width: 200px; height: 200px;
@@ -609,6 +609,115 @@ body:has(a:hover, button:hover) .cursor-follower {
 .modal-close-btn:hover { color: var(--c-text); border-color: var(--c-accent); }
 .modal-content .skill-card-title { margin-top: .5rem; margin-bottom: 1rem; }
 
+.skills-picker-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0);
+  backdrop-filter: blur(0px);
+  pointer-events: none;
+  transition: background .35s ease, backdrop-filter .35s ease;
+}
+
+.skills-picker-overlay.open {
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+  pointer-events: all;
+}
+
+.skills-picker-box {
+  background: var(--c-surface);
+  border: 1px solid rgba(99,102,241,.3);
+  border-radius: 24px;
+  padding: 2.5rem 2.5rem 2rem;
+  width: min(480px, 90vw);
+  text-align: center;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(99,102,241,.1),
+    0 0 80px rgba(99,102,241,.2),
+    0 30px 80px rgba(0,0,0,.6);
+  transform: translateY(24px) scale(.95);
+  opacity: 0;
+  transition: transform .4s var(--ease), opacity .4s var(--ease);
+}
+
+.skills-picker-overlay.open .skills-picker-box {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.skills-picker-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+  width: 2rem; height: 2rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s, border-color .2s;
+}
+
+.skills-picker-close:hover {
+  color: var(--c-text);
+  border-color: var(--c-accent);
+}
+
+.skills-picker-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  margin: .5rem 0 2rem;
+  background: var(--c-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills-picker-choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.skills-picker-btn {
+  background: var(--c-bg);
+  border: 1.5px solid var(--c-border);
+  border-radius: 16px;
+  padding: 1.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  cursor: none;
+  transition: border-color .25s, box-shadow .25s, transform .2s var(--ease);
+}
+
+.skills-picker-btn:hover {
+  border-color: var(--c-accent);
+  box-shadow: 0 0 30px rgba(99,102,241,.35), 0 8px 30px rgba(0,0,0,.3);
+  transform: translateY(-3px);
+}
+
+.skills-picker-btn-icon { font-size: 2.2rem; }
+
+.skills-picker-btn-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.skills-picker-btn-sub {
+  font-size: .8rem;
+  color: var(--c-muted);
+}
+
 .desktop-only { display: block; }
 .mobile-only { display: none; }
 
@@ -684,6 +793,10 @@ body:has(a:hover, button:hover) .cursor-follower {
   .hub-bg-grid { display: none; }
 
   .modal-overlay { display: flex; }
+
+  .skills-picker-close { cursor: pointer; }
+  .skills-picker-btn { cursor: pointer; }
+  .skills-picker-choices { grid-template-columns: 1fr; }
 
   button, a { cursor: pointer; }
 }

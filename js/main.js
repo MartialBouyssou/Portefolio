@@ -58,6 +58,54 @@ if (!IS_MOBILE) {
   })();
 }
 
+const pickerOverlay  = document.getElementById('skillsPickerOverlay');
+const pickerClose    = document.getElementById('skillsPickerClose');
+const btnCompetences = document.getElementById('btnVoirCompetences');
+const pickHard       = document.getElementById('pickHard');
+const pickSoft       = document.getElementById('pickSoft');
+
+function openPicker() {
+  pickerOverlay.classList.add('open');
+  pickerOverlay.setAttribute('aria-hidden', 'false');
+}
+
+function closePicker() {
+  pickerOverlay.classList.remove('open');
+  pickerOverlay.setAttribute('aria-hidden', 'true');
+}
+
+if (btnCompetences) {
+  btnCompetences.addEventListener('click', () => {
+    if (IS_MOBILE) {
+      document.getElementById('hard-skills')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      openPicker();
+    }
+  });
+}
+
+if (pickerClose) pickerClose.addEventListener('click', closePicker);
+
+if (pickerOverlay) {
+  pickerOverlay.addEventListener('click', e => {
+    if (e.target === pickerOverlay) closePicker();
+  });
+}
+
+if (pickHard) {
+  pickHard.addEventListener('click', () => {
+    closePicker();
+    goToPage('hard-skills');
+  });
+}
+
+if (pickSoft) {
+  pickSoft.addEventListener('click', () => {
+    closePicker();
+    goToPage('soft-skills');
+  });
+}
+
 let currentPageId   = 'home';
 let isTransitioning = false;
 

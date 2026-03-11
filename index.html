@@ -18,6 +18,24 @@
     </div>
   </div>
 
+  <div class="skills-picker-overlay" id="skillsPickerOverlay" aria-hidden="true">
+    <div class="skills-picker-box">
+      <button class="skills-picker-close" id="skillsPickerClose" type="button" aria-label="Fermer">✕</button>
+      <p class="section-eyebrow">Compétences</p>
+      <h2 class="skills-picker-title">Que veux-tu explorer ?</h2>
+      <div class="skills-picker-choices">
+        <button class="skills-picker-btn" id="pickHard" type="button">
+          <span class="skills-picker-btn-label">Hard Skills</span>
+          <span class="skills-picker-btn-sub">Techniques & projets</span>
+        </button>
+        <button class="skills-picker-btn" id="pickSoft" type="button">
+          <span class="skills-picker-btn-label">Soft Skills</span>
+          <span class="skills-picker-btn-sub">Comportement & méthodes</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <section id="home" class="page active" data-page="home">
 
     <div class="desktop-only">
@@ -43,7 +61,7 @@
         <p class="hero-tagline">Développeur: Créatif · Analyste · Curieux</p>
 
         <div class="hero-cta-group">
-          <button class="btn-primary" data-goto="hard-skills" type="button">Voir mes compétences</button>
+          <button class="btn-primary" id="btnVoirCompetences" type="button">Voir mes compétences</button>
           <button class="btn-secondary" data-goto="about" type="button">En savoir plus</button>
         </div>
       </div>
@@ -68,38 +86,34 @@
           <h2 class="section-title">Qui suis-je ?</h2>
           <div class="about-body">
             <p>
-    Je suis actuellement étudiant en première année de BUT Informatique à l’IUT du Limousin. 
-    Je suis curieux de nature et j’ai toujours aimé comprendre le fonctionnent des systèmes et tester de nouvelles idées.
-    de nouvelles idées. Cette curiosité m’a naturellement conduit vers la programmation.
-  </p>
-
-  <p>
-    J’ai commencé très jeune à découvrir le développement à travers des environnements visuels 
-    basés sur des blocs, qui m’ont permis de comprendre les bases de la logique algorithmique. 
-    Au fil du temps, j’ai progressivement exploré d’autres technologies et environnements de développement, 
-    en menant divers projets personnels et en apprenant à structurer mes applications de manière 
-    claire et organisée.
-  </p>
-
-  <p>
-    Ce qui me plaît dans l’informatique c'est l’équilibre entre la créativité et la rigueur : 
-    transformer une idée en projet concret, organiser proprement une application et concevoir des 
-    solutions cohérentes et maintenables.
-  </p>
-
-  <p>
-    En parallèle du développement, j’apprécie la lecture et l’écriture, qui enrichissent 
-    ma réflexion et mon imagination. Ces centres d'intérêts influencent aussi ma manière d’aborder les projets 
-    informatiques, en cherchant toujours à comprendre les idées en profondeur et à explorer de 
-    nouvelles perspectives.
-  </p>
-
-  <p>
-    À l’avenir, je souhaite poursuivre mon parcours en informatique tout en m’ouvrant davantage 
-    à l’international. Mon objectif est notamment de réaliser un stage à l’étranger afin de découvrir 
-    de nouvelles cultures, collaborer dans des environnements différents et continuer à améliorer 
-    mon anglais.
-  </p>
+              Je suis actuellement étudiant en première année de BUT Informatique à l'IUT du Limousin. 
+              Je suis curieux de nature et j'ai toujours aimé comprendre le fonctionnent des systèmes et tester 
+              de nouvelles idées. Cette curiosité m'a naturellement conduit vers la programmation.
+            </p>
+            <p>
+              J'ai commencé très jeune à découvrir le développement à travers des environnements visuels 
+              basés sur des blocs, qui m'ont permis de comprendre les bases de la logique algorithmique. 
+              Au fil du temps, j'ai progressivement exploré d'autres technologies et environnements de développement, 
+              en menant divers projets personnels et en apprenant à structurer mes applications de manière 
+              claire et organisée.
+            </p>
+            <p>
+              Ce qui me plaît dans l'informatique c'est l'équilibre entre la créativité et la rigueur : 
+              transformer une idée en projet concret, organiser proprement une application et concevoir des 
+              solutions cohérentes et maintenables.
+            </p>
+            <p>
+              En parallèle du développement, j'apprécie la lecture et l'écriture, qui enrichissent 
+              ma réflexion et mon imagination. Ces centres d'intérêts influencent aussi ma manière d'aborder les projets 
+              informatiques, en cherchant toujours à comprendre les idées en profondeur et à explorer de 
+              nouvelles perspectives.
+            </p>
+            <p>
+              À l'avenir, je souhaite poursuivre mon parcours en informatique tout en m'ouvrant davantage 
+              à l'international. Mon objectif est notamment de réaliser un stage à l'étranger afin de découvrir 
+              de nouvelles cultures, collaborer dans des environnements différents et continuer à améliorer 
+              mon anglais.
+            </p>
           </div>
         </div>
 
@@ -132,7 +146,7 @@
       <div class="hub-center-card" id="hubCenter">
         <p class="section-eyebrow">Compétences techniques</p>
         <h2 class="hub-card-title">Hard<br>Skills</h2>
-        <p class="hub-card-subtitle">Cliquez sur une compétence</p>
+        <p class="hub-card-subtitle">Clique sur une compétence</p>
       </div>
 
       <button class="orbit-anchor anchor-top" data-target="card-dev" type="button">
@@ -153,7 +167,7 @@
       </button>
       <button class="orbit-anchor anchor-left" data-target="card-gestion" type="button">
         <span class="anchor-icon">←</span>
-        <span class="anchor-label">Gestion de projet</span>
+        <span class="anchor-label">Clarifier des besoin</span>
       </button>
 
       <div class="skill-panel" id="card-dev" data-slide="top">
@@ -161,36 +175,29 @@
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Concevoir une application structurée</h3>
           <p class="skill-card-desc">
-      Dans le cadre d'un projet (<strong>S1.01</strong>) pendant mes études à l'IUT, j’ai développé une 
-      implémentation du jeu <strong>Sutom</strong> en Python. 
-      Dans mon cas, l'objectif n’était pas seulement de faire fonctionner le programme, mais 
-      aussi de concevoir une application claire et maintenable.
-    </p>
-
-    <p class="skill-card-desc">
-      Pour cela, j’ai organisé le projet en plusieurs modules distincts 
-      (<strong>core</strong>, <strong>persistence</strong>, <strong>ui</strong>) 
-      afin de séparer la logique du jeu, la gestion des données et l’interface. 
-      Cette organisation permet de modifier une partie du programme sans impacter 
-      les autres et rend le projet plus facile à comprendre.
-    </p>
-
-    <p class="skill-card-desc">
-      J’ai également optimisé le chargement des dictionnaires en mettant en place 
-      un système de cache utilisant la sérialisation binaire avec 
-      <strong>pickle</strong>. Cette solution réduit le temps de chargement 
-      lors des exécutions suivantes du programme.
-    </p>
-
-    <p class="skill-card-desc">
-      Ainsi, ce projet m’a permis de renforcer mes connaissances autodidactes et 
-  d’apprendre à structurer plus clairement des tâches complexes grâce à une 
-  approche algorithmique.
-    </p>
-
-    <p class="skill-card-desc">
-      <a href="https://github.com/MartialBouyssou/sutom" target="_blank">Voir le projet</a>
-    </p>
+            Dans le cadre d'un projet (<strong>S1.01</strong>) pendant mes études, j'ai développé une 
+            implémentation du jeu <strong>Sutom</strong> en Python. 
+            Dans mon cas, l'objectif n'était pas seulement de faire fonctionner le programme, mais 
+            aussi de concevoir une application claire et maintenable.
+          </p>
+          <p class="skill-card-desc">
+            Pour cela, j'ai organisé le projet en plusieurs modules distincts 
+            afin de séparer la logique du jeu, la gestion des données et l'interface. 
+          </p>
+          <p class="skill-card-desc">
+            J'ai également optimisé le chargement des dictionnaires en mettant en place 
+            un système de cache utilisant la sérialisation binaire avec 
+            <strong>pickle</strong>. Cette solution réduit le temps de chargement 
+            lors des exécutions suivantes du programme.
+          </p>
+          <p class="skill-card-desc">
+            Ainsi, ce projet m'a permis de renforcer mes connaissances autodidactes et 
+            d'apprendre à structurer plus clairement des tâches complexes grâce à une 
+            approche algorithmique.
+          </p>
+          <p class="skill-card-desc">
+            <a href="https://github.com/MartialBouyssou/sutom" target="_blank">Voir le projet</a>
+          </p>
         </div>
       </div>
 
@@ -199,33 +206,31 @@
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Algorithmique & optimisation</h3>
          <p class="skill-card-desc">
-      Lors du projet <strong>S1.02</strong> à l’IUT, j’ai travaillé sur l’implémentation 
-      et la comparaison de plusieurs algorithmes. L’objectif était de comprendre 
-      concrètement comment les choix algorithmiques influencent les performances 
-      d’un programme.
-    </p>
-
-    <p class="skill-card-desc">
-      On a développé, avec mon binôme, différentes versions d’algorithmes en Python, notamment 
-      certaines implémentées de manière récursive. Afin de comparer leurs 
-      performances, On a créé un programme permettant de mesurer les temps 
-      d’exécution sur différentes tailles de données.
-    </p>
-
-    <p class="skill-card-desc">
-      Les résultats ont ensuite été analysés à l’aide de graphiques afin de 
-      visualiser l’évolution des temps d’exécution et de mieux comprendre la 
-      complexité des algorithmes étudiés.
-    </p>
-
-    <p class="skill-card-desc">
-      Ce travail m’a permis d’apprendre à analyser un problème algorithmique, 
-      à tester différentes approches et à justifier un choix technique à partir 
-      de données mesurées.
-    </p>
-    <p class="skill-card-desc">
-      <a href="https://github.com/MartialBouyssou/methode_tri" target="_blank">Voir le projet</a>
-    </p>
+            Lors du projet <strong>S1.02</strong>, j'ai travaillé sur l'implémentation 
+            et la comparaison de plusieurs algorithmes. L'objectif était de comprendre 
+            concrètement comment les choix algorithmiques influencent les performances 
+            d'un programme.
+          </p>
+          <p class="skill-card-desc">
+            On a développé, avec mon binôme, différentes versions d'algorithmes en Python, notamment 
+            certaines implémentées de manière récursive. Afin de comparer leurs 
+            performances, On a créé un programme permettant de mesurer les temps 
+            d'exécution sur différentes tailles de données.
+          </p>
+          <p class="skill-card-desc">
+            Les résultats ont ensuite été analysés à l'aide de graphiques afin de 
+            visualiser l'évolution des temps d'exécution et de mieux comprendre la 
+            complexité des algorithmes étudiés.
+          </p>
+          <p class="skill-card-desc">
+            Ce travail m'a permis d'apprendre à analyser un problème algorithmique, 
+            à tester différentes approches et à justifier un choix technique à partir 
+            de données mesurées. Mais il a aussi mis en exergue ma capacité à utiliser 
+            des documentations, notre projet étant basé sur des librairies externes.
+          </p>
+          <p class="skill-card-desc">
+            <a href="https://github.com/MartialBouyssou/methode_tri" target="_blank">Voir le projet</a>
+          </p>
         </div>
       </div>
 
@@ -234,38 +239,32 @@
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Modélisation de données & SQL</h3>
           <p class="skill-card-desc">
-      Dans le cadre du projet <strong>S1.04</strong>, j’ai travaillé sur 
-      l’analyse d’un jeu de données nécessitant plusieurs étapes : nettoyage, 
-      structuration et exploitation des informations.
-    </p>
-
-    <p class="skill-card-desc">
-      La première étape a consisté à analyser les données afin d’identifier 
-      les incohérences ou valeurs manquantes. Ce travail de nettoyage est 
-      essentiel pour garantir la fiabilité des analyses réalisées ensuite.
-    </p>
-
-    <p class="skill-card-desc">
-      J’ai ensuite conçu un modèle relationnel permettant d’organiser les 
-      informations en plusieurs tables liées entre elles. Cette modélisation 
-      permet de structurer les données de manière logique et d’éviter les 
-      redondances.
-    </p>
-
-    <p class="skill-card-desc">
-      Enfin, j’ai utilisé des requêtes SQL incluant des jointures et des 
-      agrégations (<strong>GROUP BY</strong>) afin d’extraire les informations 
-      nécessaires à la création de graphiques d’analyse.
-    </p>
-
-    <p class="skill-card-desc">
-      Ce projet m’a permis de comprendre l’importance de la modélisation et 
-      de la qualité des données avant toute analyse.
-    </p>
-
-    <p class="skill-card-desc">
-      <a href="medias/Rapport_Projet_SQL.pdf" target="_blank">Voir le projet</a>
-    </p>
+            Dans mon projet <strong>S1.04</strong>, j'ai travaillé sur 
+            l'analyse d'un jeu de données nécessitant plusieurs étapes : nettoyage, 
+            structuration et exploitation des informations.
+          </p>
+          <p class="skill-card-desc">
+            La première étape a consisté à analyser les données afin d'identifier 
+            les incohérences ou valeurs manquantes. Ce travail de nettoyage est 
+            essentiel pour garantir la fiabilité des analyses réalisées ensuite.
+          </p>
+          <p class="skill-card-desc">
+            J'ai ensuite conçu un modèle relationnel permettant d'organiser les 
+            informations en plusieurs tables liées entre elles. Cette modélisation 
+            permet de structurer les données de manière logique et d'éviter les 
+            redondances.
+          </p>
+          <p class="skill-card-desc">
+            Enfin, j'ai utilisé des requêtes SQL incluant des jointures et des 
+            agrégations afin d'extraire les informations nécessaires à la création de graphiques d'analyse.
+          </p>
+          <p class="skill-card-desc">
+            Ce projet m'a permis de comprendre l'importance de la modélisation et 
+            de la qualité des données avant toute analyse.
+          </p>
+          <p class="skill-card-desc">
+            <a href="medias/Rapport_Projet_SQL.pdf" target="_blank">Voir le projet</a>
+          </p>
         </div>
       </div>
 
@@ -274,32 +273,28 @@
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Script & administration système</h3>
           <p class="skill-card-desc">
-      Lors d'un projet (<strong>S1.03</strong>) donné par l'IUT, j’ai développé plusieurs scripts 
-      Bash permettant d’automatiser des opérations sur le système.
-    </p>
-
-    <p class="skill-card-desc">
-      L’un des objectifs du projet était de concevoir des scripts robustes 
-      capables de vérifier les erreurs possibles avant d’exécuter une action. 
-      J’ai notamment mis en place des vérifications sur l’existence des fichiers 
-      ou la validité des paramètres fournis.
-    </p>
-
-    <p class="skill-card-desc">
-      Les scripts utilisent également des <strong>codes de retour explicites</strong> 
-      (comme <strong>exit 1</strong>) afin de signaler les erreurs. Cela permet 
-      de les intégrer plus facilement dans des chaînes de traitement automatisées.
-    </p>
-
-    <p class="skill-card-desc">
-      Ce travail m’a permis de mieux comprendre le fonctionnement des scripts 
-      système et l’importance de la gestion des erreurs dans les outils 
-      d’automatisation.
-    </p>
-
-    <p class="skill-card-desc">
-      <a href="https://github.com/MartialBouyssou/S103-Biblio" target="_blank">Voir le projet</a>
-    </p>
+            Lors d'un projet (<strong>S1.03</strong>) donné par l'IUT, j'ai développé plusieurs scripts 
+            Bash permettant d'automatiser des opérations sur le système.
+          </p>
+          <p class="skill-card-desc">
+            L'un des objectifs du projet était de concevoir des scripts robustes 
+            capables de vérifier les erreurs possibles avant d'exécuter une action. 
+            J'ai notamment mis en place des vérifications sur l'existence des fichiers 
+            ou la validité des paramètres fournis.
+          </p>
+          <p class="skill-card-desc">
+            Les scripts utilisent également des <strong>codes de retour explicites</strong> 
+            (comme <strong>exit 1</strong>) afin de signaler les erreurs. Cela permet 
+            de les intégrer plus facilement dans des chaînes de traitement automatisées.
+          </p>
+          <p class="skill-card-desc">
+            Ce travail m'a permis de mieux comprendre le fonctionnement des scripts 
+            système et l'importance de la gestion des erreurs dans les outils 
+            d'automatisation.
+          </p>
+          <p class="skill-card-desc">
+            <a href="https://github.com/MartialBouyssou/S103-Biblio" target="_blank">Voir le projet</a>
+          </p>
         </div>
       </div>
 
@@ -308,62 +303,49 @@
         <div class="skill-panel-inner">
           <h3 class="skill-card-title">Structurer un projet et clarifier un besoin</h3>
           <p class="skill-card-desc">
-      Dans le cadre du projet <strong>S1.05</strong>, j’ai travaillé sur 
-      l’analyse d’un besoin exprimé de manière assez vague afin de le 
-      transformer en exigences techniques claires.
-    </p>
-
-    <p class="skill-card-desc">
-      Pour structurer ce travail, nous avons utilisé la méthode 
-      <strong>MoSCoW</strong> afin de prioriser les fonctionnalités 
-      (MUST, SHOULD, COULD, WON’T). Cette approche permet de distinguer 
-      les éléments essentiels du projet de ceux qui sont secondaires.
-    </p>
-
-    <p class="skill-card-desc">
-      Nous avons également défini des objectifs <strong>SMART</strong> 
-      afin de rendre les attentes plus précises et mesurables.
-    </p>
-
-    <p class="skill-card-desc">
-      Ce projet m’a permis de comprendre qu’un bon développement commence 
-      par une bonne compréhension du besoin et une structuration claire 
-      des objectifs du projet.
-    </p>
-
-    <p class="skill-card-desc">
-      <a href="medias/dossier-s105.pdf" target="_blank">Voir le projet</a>
-    </p>
+            Dans le cadre d'un projet (<strong>S1.05</strong>), j'ai travaillé sur 
+            l'analyse d'un besoin exprimé de manière assez vague. Mon but était de le 
+            transformer en exigences techniques claires.
+          </p>
+          <p class="skill-card-desc">
+            Nous avons donc pu mettre à profit différentes méthodes que l'on avait précédemment étudiées. 
+            L'une de ces méthode est <strong>MoSCoW</strong> qui permet de prioriser les fonctionnalités 
+            et de distinguer les éléments essentiels des secondaires. Une autre serait la définition des objectifs
+            <strong>SMART</strong> afin de rendre les attentes plus précises et mesurables.
+          </p>
+          <p class="skill-card-desc">
+            Lors de ce projet, j'ai pu mettre à exécution des méthodologie, vu en cours, à des fins concrètes.
+            Ainsi, j'ai pu apprendre, en plus des méthodologies, comment transformer un besoin en un produit 
+            remplissant les attentes du client.
+          </p>
+          <p class="skill-card-desc">
+            <a href="medias/dossier-s105.pdf" target="_blank">Voir le projet</a>
+          </p>
         </div>
       </div>
     </div>
-    <!-- Partie responsive fait à l'IA... -->
+
     <div class="page-inner mobile-only">
       <p class="section-eyebrow">Compétences techniques</p>
       <h2 class="section-title">Hard Skills</h2>
       <div class="skills-grid">
         <button class="skill-card-mobile" data-modal="card-dev" type="button">
-          <div class="skill-icon">💻</div>
           <h3>Développement logiciel</h3>
           <p>Concevoir une application structurée, maintenable et robuste.</p>
         </button>
         <button class="skill-card-mobile" data-modal="card-algo" type="button">
-          <div class="skill-icon">🧮</div>
           <h3>Algorithmique</h3>
           <p>Comparer et optimiser des algorithmes.</p>
         </button>
         <button class="skill-card-mobile" data-modal="card-sql" type="button">
-          <div class="skill-icon">🗄️</div>
           <h3>Modélisation de données</h3>
           <p>Modélisation relationnelle et requêtes SQL.</p>
         </button>
         <button class="skill-card-mobile" data-modal="card-bash" type="button">
-          <div class="skill-icon">⚙️</div>
           <h3>Scripting système</h3>
           <p>Automatiser des tâches via Bash / Linux.</p>
         </button>
         <button class="skill-card-mobile" data-modal="card-gestion" type="button">
-          <div class="skill-icon">📋</div>
           <h3>Gestion de projet</h3>
           <p>Cadrage, priorisation, objectifs SMART.</p>
         </button>
@@ -379,15 +361,15 @@
       <div class="hub-center-card" id="softHubCenter">
         <p class="section-eyebrow">Compétences comportementales</p>
         <h2 class="hub-card-title">Soft<br>Skills</h2>
-        <p class="hub-card-subtitle">Cliquez sur une compétence</p>
+        <p class="hub-card-subtitle">Clique sur une compétence</p>
       </div>
 
-      <button class="orbit-anchor anchor-top soft-anchor" data-target="soft-problem" type="button">
+      <button class="orbit-anchor anchor-top soft-anchor" data-target="soft-creativity" type="button">
         <span class="anchor-icon">↑</span>
-        <span class="anchor-label">Résolution</span>
+        <span class="anchor-label">Créativité</span>
       </button>
-      <button class="orbit-anchor anchor-right soft-anchor" data-target="soft-rigor" type="button">
-        <span class="anchor-label">Rigueur</span>
+      <button class="orbit-anchor anchor-right soft-anchor" data-target="soft-curiosity" type="button">
+        <span class="anchor-label">Curiosité</span>
         <span class="anchor-icon">→</span>
       </button>
       <button class="orbit-anchor anchor-bottom-right soft-anchor" data-target="soft-adapt" type="button">
@@ -403,43 +385,150 @@
         <span class="anchor-label">Organisation</span>
       </button>
 
-      <div class="skill-panel soft-panel" id="soft-problem" data-slide="top">
+      <div class="skill-panel soft-panel" id="soft-creativity" data-slide="top">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Résolution de problèmes</h3>
-          <p class="skill-card-desc">Décomposer, structurer, résoudre.</p>
+          <h3 class="skill-card-title">Mon esprit créatif</h3>
+
+          <p class="skill-card-desc">
+            J’ai commencé la programmation assez jeune. Ce qui m’a attiré dès le début, 
+            c’est la possibilité de transformer des idées en projets concrets. 
+            Programmer me permet de créer des univers, des systèmes ou des expériences 
+            à partir de ce que j’imagine.
+          </p>
+
+          <p class="skill-card-desc">
+            Un exemple simple mais marquant est 
+            <a href="https://github.com/GatienBouyssou/Game_LN" target="_blank">un cadeau d’anniversaire</a> 
+            que j’ai réalisé pour ma mère avec mon frère. 
+            Nous avons développé un petit jeu de plateforme dans lequel 
+            j’ai écrit une histoire inspirée d’événements importants de sa vie. 
+            Le jeu racontait son parcours à travers différents niveaux représentant ces 
+            moments marquants.
+          </p>
+
+          <p class="skill-card-desc">
+            Cette créativité ne s’exprime pas seulement dans mes projets informatiques. 
+            J’aime également écrire de courtes histoires, souvent inspirées par la 
+            psychologie ou la philosophie. Cette pratique enrichit mon imagination et 
+            m’aide à aborder les projets avec un regard différent.
+          </p>
         </div>
       </div>
 
-      <div class="skill-panel soft-panel" id="soft-rigor" data-slide="right">
+      <div class="skill-panel soft-panel" id="soft-curiosity" data-slide="right">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Rigueur</h3>
-          <p class="skill-card-desc">Qualité et finitions.</p>
+          <h3 class="skill-card-title">Ma curiosité</h3>
+
+          <p class="skill-card-desc">
+            La curiosité est probablement ce qui m’a le plus fait progresser en 
+            informatique. J’aime comprendre comment fonctionnent les systèmes et 
+            explorer de nouvelles technologies.
+          </p>
+          <p class="skill-card-desc">
+            Par exemple, une grande partie de mes premières expériences en 
+            programmation s’est faite en autodidacte. En explorant différents 
+            langages et environnements, j’ai progressivement appris à créer mes 
+            propres projets et à résoudre les problèmes que je rencontrais.
+          </p>
+          <p class="skill-card-desc">
+            Aujourd’hui encore, cette curiosité me pousse à chercher, tester et 
+            expérimenter. C’est souvent en explorant par moi-même que je découvre 
+            de nouvelles façons d’améliorer mes projets. 
+            <!--Alors ce n'est pas une déévalorisation de mes professeurs !!!-->
+          </p>
         </div>
       </div>
 
+      <!-- À refaire -->
       <div class="skill-panel soft-panel" id="soft-adapt" data-slide="bottom-right">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Adaptabilité</h3>
-          <p class="skill-card-desc">Changer de contexte facilement.</p>
+          <h3 class="skill-card-title">Ma capacité d'adaptation</h3>
+
+          <p class="skill-card-desc">
+            Dans l’informatique, les technologies et les outils évoluent 
+            rapidement. J’ai donc appris à m’adapter à différents langages, 
+            environnements et types de projets au fil de mon apprentissage.
+          </p>
+          <p class="skill-card-desc">
+            Au début, j’ai découvert la programmation à travers des environnements 
+            visuels basés sur des blocs, puis j’ai progressivement exploré des 
+            langages plus techniques et différents outils de développement. 
+            Cette progression m’a appris à aborder un nouvel environnement 
+            sans appréhension et à apprendre rapidement par moi-même.
+          </p>
+          <p class="skill-card-desc">
+            Dans la vie quotidienne, cette capacité d’adaptation passe souvent 
+            par l’anticipation. J’essaie généralement de garder une vision claire 
+            de ce qui peut arriver afin de m’ajuster rapidement lorsque la 
+            situation change.
+          </p>
+          <p class="skill-card-desc">
+            Cette façon de fonctionner me permet de rester flexible face aux 
+            imprévus tout en gardant une certaine maîtrise de l’organisation 
+            et de l’avancement de mes projets.
+          </p>
         </div>
       </div>
-
+      
       <div class="skill-panel soft-panel" id="soft-critical" data-slide="bottom-left">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Analyse</h3>
-          <p class="skill-card-desc">Comparer, mesurer, justifier.</p>
+          <h3 class="skill-card-title">Mon esprit d’analyse</h3>
+
+          <p class="skill-card-desc">
+            J’aime analyser les problèmes avant de chercher une solution. 
+            En programmation, cela signifie comprendre le fonctionnement d’un 
+            système, identifier les causes d’un bug ou comparer différentes 
+            approches possibles.
+          </p>
+          <p class="skill-card-desc">
+            Lors de mes projets, j’essaie toujours de décomposer un problème 
+            complexe en plusieurs étapes plus simples. Cette approche me permet 
+            de mieux structurer mes programmes et de comprendre plus rapidement 
+            les difficultés rencontrées.
+          </p>
+          <p class="skill-card-desc">
+            Cet esprit d’analyse se retrouve également dans mes centres 
+            d’intérêt. J’apprécie les jeux stratégiques comme les échecs, 
+            qui demandent d’anticiper plusieurs coups à l’avance et de 
+            comprendre la logique globale d’une position.
+          </p>
+          <p class="skill-card-desc">
+            La lecture occupe aussi une place importante pour moi. Les 
+            œuvres qui explorent des univers complexes ou des réflexions 
+            philosophiques me poussent souvent à analyser les idées et les 
+            systèmes de pensée présentés.
+          </p>
         </div>
       </div>
 
       <div class="skill-panel soft-panel" id="soft-organize" data-slide="left">
         <button class="panel-back-btn soft-panel-back" type="button">← Retour au hub</button>
         <div class="skill-panel-inner">
-          <h3 class="skill-card-title">Organisation</h3>
-          <p class="skill-card-desc">Prioriser et livrer.</p>
+          <h3 class="skill-card-title">L'organisation</h3>
+
+          <p class="skill-card-desc">
+            J’accorde une grande importance à l’organisation, que ce soit 
+            dans mes projets ou dans ma manière de travailler.
+          </p>
+          <p class="skill-card-desc">
+            Lorsque je développe un projet, j’essaie toujours de structurer 
+            clairement le code et les différentes parties de l’application. 
+            Une bonne organisation permet de mieux comprendre le fonctionnement 
+            d’un programme et facilite les améliorations futures, comme la lecture.
+          </p>
+          <p class="skill-card-desc">
+            Ce besoin d’organisation se retrouve aussi dans ma vie quotidienne. 
+            J’aime garder une vision claire de ce qui m’entoure en structurant 
+            correctement mes tâches, mes projets ou mon environnement de travail.
+          </p>
+          <p class="skill-card-desc">
+            Cette habitude m’aide à rester efficace et à avancer de manière 
+            plus sereine sur les projets que j’entreprends.
+          </p>
         </div>
       </div>
     </div>
@@ -448,33 +537,27 @@
       <p class="section-eyebrow">Compétences comportementales</p>
       <h2 class="section-title">Soft Skills</h2>
       <div class="skills-grid">
-        <button class="skill-card-mobile" data-modal="soft-problem" type="button">
-          <div class="skill-icon">🧩</div>
+        <button class="skill-card-mobile" data-modal="soft-creativity" type="button">
           <h3>Résolution</h3>
           <p>Décomposer, structurer, résoudre.</p>
         </button>
-        <button class="skill-card-mobile" data-modal="soft-rigor" type="button">
-          <div class="skill-icon">📐</div>
-          <h3>Rigueur</h3>
+        <button class="skill-card-mobile" data-modal="soft-curiosity" type="button">
+          <h3>Je suis curieux</h3>
           <p>Qualité et finitions.</p>
         </button>
         <button class="skill-card-mobile" data-modal="soft-adapt" type="button">
-          <div class="skill-icon">🔄</div>
           <h3>Adaptabilité</h3>
           <p>Changer de contexte facilement.</p>
         </button>
         <button class="skill-card-mobile" data-modal="soft-critical" type="button">
-          <div class="skill-icon">📊</div>
           <h3>Analyse</h3>
           <p>Comparer, mesurer, justifier.</p>
         </button>
         <button class="skill-card-mobile" data-modal="soft-organize" type="button">
-          <div class="skill-icon">🗂️</div>
           <h3>Organisation</h3>
           <p>Prioriser et livrer.</p>
         </button>
         <button class="skill-card-mobile" data-modal="" type="button" style="opacity:.5;pointer-events:none">
-          <div class="skill-icon">🚀</div>
           <h3>Curiosité</h3>
           <p>Apprentissage continu.</p>
         </button>
