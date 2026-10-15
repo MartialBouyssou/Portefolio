@@ -430,11 +430,11 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 .anchor-icon { font-size: 1.2rem; color: var(--c-accent2); }
-.anchor-top { top: 2rem; left: 50%; transform: translateX(-50%); flex-direction: column; text-align: center; }
-.anchor-right { right: 2rem; top: 50%; transform: translateY(-50%); }
-.anchor-left { left: 2rem; top: 50%; transform: translateY(-50%); flex-direction: row-reverse; }
-.anchor-bottom-right { right: 2rem; bottom: 2rem; flex-direction: column-reverse; text-align: center; }
-.anchor-bottom-left { left: 2rem; bottom: 2rem; flex-direction: column-reverse; text-align: center; }
+.anchor-top { top: 4rem; left: 50%; transform: translateX(-50%); flex-direction: column; text-align: center; }
+.anchor-right { right: 4rem; top: 50%; transform: translateY(-50%); }
+.anchor-left { left: 4rem; top: 50%; transform: translateY(-50%); flex-direction: row-reverse; }
+.anchor-bottom-right { right: 4rem; bottom: 4rem; flex-direction: column-reverse; text-align: center; }
+.anchor-bottom-left { left: 4rem; bottom: 4rem; flex-direction: column-reverse; text-align: center; }
 
 #hard-skills.active .orbit-anchor { opacity: 1; pointer-events: all; }
 #hard-skills.panel-open .orbit-anchor { opacity: 0 !important; pointer-events: none !important; }
